@@ -6,17 +6,18 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract MultichainWallet is CcipClient, LZClient /*, Ownable, */ {
+contract MultichainWallet is CcipClient, LZClient {
     using SafeERC20 for IERC20;
-
     // to prevert rentrun
     bool public isRunning;
+
     modifier onlyOwnerOrThis() {
         if (msg.sender != owner() && msg.sender != address(this)) {
             revert InvalidSender();
         }
         _;
     }
+
     constructor(
         address _endpoint,
         address _owner,
@@ -43,6 +44,7 @@ contract MultichainWallet is CcipClient, LZClient /*, Ownable, */ {
     }
 
     function _handleMessages(bytes memory _messages) internal virtual override {
+        if (_messages.length < 32) return;
         _runMulticall(_decodeMessages(_messages));
     }
 
