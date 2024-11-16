@@ -17,6 +17,7 @@ const navLinks = [
 ];
 
 export function Footer() {
+
   return (
     <footer className="bg-black border-t border-[#00FF94]/20">
       <div className="container mx-auto px-4 py-12">
@@ -72,11 +73,15 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <span>Powered by</span>
-              <span className="text-[#00FF94]">Ethereum</span>
+              <span className="text-[#00FF94]">Dynamic Wallet</span>
               <span>•</span>
-              <span className="text-[#00FF94]">IPFS</span>
+              <span className="text-[#00FF94]">1inch</span>
               <span>•</span>
-              <span className="text-[#00FF94]">The Graph</span>
+              <span className="text-[#00FF94]">Chainlink</span>
+              <span>•</span>
+              <span className="text-[#00FF94]">Chronicle Protocol</span>
+              <span>•</span>
+              <span className="text-[#00FF94]">Blockscout</span>
             </div>
           </div>
         </div>

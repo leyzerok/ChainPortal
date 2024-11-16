@@ -29,6 +29,12 @@ const networks = [
     logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png',
     description: 'The original decentralized smart contract platform',
   },
+  // gnosis
+  {
+    name: 'gnosis',
+    logo: 'https://cryptologos.cc/logos/gnosis-gno-logo.png',
+    description: 'Gnosis is a decentralized prediction market built on Ethereum',
+  }
 ];
 
 export function Networks() {
