@@ -10,10 +10,9 @@ const socialLinks = [
 ];
 
 const navLinks = [
-  { name: 'About', href: '#' },
-  { name: 'Documentation', href: '#' },
-  { name: 'Terms', href: '#' },
-  { name: 'Privacy', href: '#' },
+  { name: 'Docs', href: '#' },
+  { name: 'Terms of Use', href: '#' },
+  { name: 'Privacy Policy', href: '#' },
 ];
 
 export function Footer() {
@@ -26,7 +25,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <h3 className="text-2xl font-bold mb-4 text-white">ChainPortal</h3>
             <p className="text-gray-400 mb-4 max-w-md">
-              Building the future of cross-chain DeFi with institutional-grade security and seamless user experience.
+              Your portal to a user-friendly multichain portfolio. Effortlessly manage assets, execute seamless swaps, perform cross-chain transfers, and track your portfolio across multiple networks.
             </p>
           </div>
 
@@ -49,7 +48,7 @@ export function Footer() {
 
           {/* Social Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-white">Connect</h4>
+            <h4 className="text-lg font-semibold mb-4 text-white">Socials</h4>
             <div className="flex space-x-4">
               {socialLinks.map((social) => (
                 <a
@@ -69,7 +68,7 @@ export function Footer() {
         <div className="border-t border-[#00FF94]/20 pt-8 mt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 DeFi Platform. All rights reserved.
+              © 2024 ChainPortal Labs. All rights reserved.
             </p>
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <span>Powered by</span>

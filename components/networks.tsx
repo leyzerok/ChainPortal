@@ -5,35 +5,34 @@ import { Card } from '@/components/ui/card';
 
 const networks = [
   {
+    name: 'Ethereum Mainnet',
+    logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png',
+    description: 'The OG blockchain where all the magic of smart contracts and dApps started',
+  },
+  {
     name: 'Polygon',
     logo: 'https://cryptologos.cc/logos/polygon-matic-logo.png',
-    description: 'Low cost, high throughput Ethereum sidechain',
+    description: 'Ethereum’s faster, cheaper buddy that helps avoid those crazy gas fees',
   },
   {
     name: 'Arbitrum',
     logo: 'https://cryptologos.cc/logos/arbitrum-arb-logo.png',
-    description: 'Ethereum L2 with EVM compatibility',
+    description: 'A turbo boost for Ethereum—faster and cheaper, but still connected to the main chain',
   },
   {
     name: 'Base',
     logo: 'https://avatars.githubusercontent.com/u/108554348?v=4',
-    description: 'Coinbase-incubated Ethereum L2',
+    description: 'Coinbase’s chill L2 that makes Ethereum easier to use and less pricey',
   },
   {
     name: 'Optimism',
     logo: 'https://cryptologos.cc/logos/optimism-ethereum-op-logo.png',
-    description: 'Scalable Ethereum Layer 2 solution',
+    description: 'A no-drama L2 for Ethereum, built to make transactions quick and cheap',
   },
   {
-    name: 'Ethereum Mainnet',
-    logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png',
-    description: 'The original decentralized smart contract platform',
-  },
-  // gnosis
-  {
-    name: 'gnosis',
-    logo: 'https://cryptologos.cc/logos/gnosis-gno-logo.png',
-    description: 'Gnosis is a decentralized prediction market built on Ethereum',
+    name: 'Gnosis',
+    logo: 'https://avatars.githubusercontent.com/u/92709226?v=4',
+    description: 'Ethereum’s sidekick for building cool tools like wallets and governance apps',
   }
 ];
 
