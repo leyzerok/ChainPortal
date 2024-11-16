@@ -7,3 +7,6 @@
 [submodule "lib/ccip"]
     path = lib/ccip
     url = https://github.com/smartcontractkit/ccip
+[submodule "lib/devtools"]
+	path = lib/devtools
+	url = https://github.com/LayerZero-Labs/devtools
