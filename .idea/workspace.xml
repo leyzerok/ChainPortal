@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac36b799-bad2-4807-893b-dd2875f24cca" name="Changes" comment="added chainlinl ccip git">
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ccip" beforeDir="false" />
+    <list default="true" id="ac36b799-bad2-4807-893b-dd2875f24cca" name="Changes" comment="forge install: ccip">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +81,7 @@
       <updated>1731704095201</updated>
       <workItem from="1731704096650" duration="2740000" />
       <workItem from="1731742501258" duration="11233000" />
-      <workItem from="1731757093641" duration="302000" />
+      <workItem from="1731757093641" duration="2602000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -196,7 +195,23 @@
       <option name="project" value="LOCAL" />
       <updated>1731757265935</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="updated remappings file">
+      <option name="closed" value="true" />
+      <created>1731757510417</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1731757510417</updated>
+    </task>
+    <task id="LOCAL-00016" summary="forge install: ccip">
+      <option name="closed" value="true" />
+      <created>1731757712600</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1731757712600</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,6 +226,8 @@
     <MESSAGE value="added script for burning USDC on Amoy network" />
     <MESSAGE value="added empty CcipClient sc" />
     <MESSAGE value="added chainlinl ccip git" />
-    <option name="LAST_COMMIT_MESSAGE" value="added chainlinl ccip git" />
+    <MESSAGE value="updated remappings file" />
+    <MESSAGE value="forge install: ccip" />
+    <option name="LAST_COMMIT_MESSAGE" value="forge install: ccip" />
   </component>
 </project>
