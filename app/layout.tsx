@@ -4,6 +4,8 @@ import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { Providers } from '@/lib/providers';
+import '@coinbase/onchainkit/styles.css';
 
 import { DynamicContextProvider } from '@dynamic-labs/sdk-react-core';
 import { EthereumWalletConnectors } from '@dynamic-labs/ethereum';
@@ -25,7 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <DynamicContextProvider
           theme='dark'
-          settings={{            
+          settings={{
             environmentId: 'cf76d4eb-b939-4eab-84dc-20bf4625e1ed', // Replace with your actual environment ID
             walletConnectors: [EthereumWalletConnectors],
           }}>
@@ -37,7 +39,7 @@ export default function RootLayout({
           >
             <Header />
             <main className="min-h-screen bg-black text-white pt-16">
-              {children}
+              <Providers>{children}</Providers>
             </main>
             <Footer />
           </ThemeProvider>

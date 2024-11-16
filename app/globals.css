@@ -19,4 +19,12 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Headline customization */
+  .headline {
+    @apply text-white font-semibold leading-normal;
+  }
+  .ock-font-family.font-semibold.leading-normal {
+    color: white !important; /* Force text color to white */
+  }
 }
