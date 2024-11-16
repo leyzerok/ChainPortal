@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac36b799-bad2-4807-893b-dd2875f24cca" name="Changes" comment="implement minimal logic of ccip msg sending">
+    <list default="true" id="ac36b799-bad2-4807-893b-dd2875f24cca" name="Changes" comment="implemented basic receive CCIP message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CcipClient.sol" beforeDir="false" afterPath="$PROJECT_DIR$/src/CcipClient.sol" afterDir="false" />
     </list>
@@ -82,7 +82,7 @@
       <updated>1731704095201</updated>
       <workItem from="1731704096650" duration="2740000" />
       <workItem from="1731742501258" duration="11233000" />
-      <workItem from="1731757093641" duration="3645000" />
+      <workItem from="1731757093641" duration="5386000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -220,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731764302708</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="implemented basic receive CCIP message">
+      <option name="closed" value="true" />
+      <created>1731766778366</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1731766778366</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -238,6 +246,7 @@
     <MESSAGE value="updated remappings file" />
     <MESSAGE value="forge install: ccip" />
     <MESSAGE value="implement minimal logic of ccip msg sending" />
-    <option name="LAST_COMMIT_MESSAGE" value="implement minimal logic of ccip msg sending" />
+    <MESSAGE value="implemented basic receive CCIP message" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented basic receive CCIP message" />
   </component>
 </project>
