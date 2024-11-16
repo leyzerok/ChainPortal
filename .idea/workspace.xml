@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ac36b799-bad2-4807-893b-dd2875f24cca" name="Changes" comment="forge install: ccip">
+    <list default="true" id="ac36b799-bad2-4807-893b-dd2875f24cca" name="Changes" comment="implement minimal logic of ccip msg sending">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CcipClient.sol" beforeDir="false" afterPath="$PROJECT_DIR$/src/CcipClient.sol" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +82,7 @@
       <updated>1731704095201</updated>
       <workItem from="1731704096650" duration="2740000" />
       <workItem from="1731742501258" duration="11233000" />
-      <workItem from="1731757093641" duration="2602000" />
+      <workItem from="1731757093641" duration="3645000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -211,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731757712600</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="implement minimal logic of ccip msg sending">
+      <option name="closed" value="true" />
+      <created>1731764302708</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1731764302708</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +237,7 @@
     <MESSAGE value="added chainlinl ccip git" />
     <MESSAGE value="updated remappings file" />
     <MESSAGE value="forge install: ccip" />
-    <option name="LAST_COMMIT_MESSAGE" value="forge install: ccip" />
+    <MESSAGE value="implement minimal logic of ccip msg sending" />
+    <option name="LAST_COMMIT_MESSAGE" value="implement minimal logic of ccip msg sending" />
   </component>
 </project>

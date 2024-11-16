@@ -4,7 +4,8 @@ import {IRouterClient} from "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/
 import {OwnerIsCreator} from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
 import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
 import {LinkTokenInterface} from "@chainlink/contracts-ccip/src/v0.8/shared/interfaces/LinkTokenInterface.sol";
-contract CcipClient is OwnerIsCreator {
+import {CCIPReceiver} from "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
+contract CcipClient is OwnerIsCreator, CCIPReceiver {
     // Custom errors to provide more descriptive revert messages.
     error NotEnoughBalance(uint256 currentBalance, uint256 calculatedFees); // Used to make sure contract has enough balance.
     // Event emitted when a message is sent to another chain.
@@ -16,14 +17,24 @@ contract CcipClient is OwnerIsCreator {
         address feeToken, // the token address used to pay CCIP fees.
         uint256 fees // The fees paid for sending the CCIP message.
     );
-    IRouterClient private s_router;
-    LinkTokenInterface private s_linkToken;
+    // Event emitted when a message is received from another chain.
+        event MessageReceived(
+            bytes32 indexed messageId, // The unique ID of the message.
+            uint64 indexed sourceChainSelector, // The chain selector of the source chain.
+            address sender, // The address of the sender from the source chain.
+            string text // The text that was received.
+        );
+
+    IRouterClient private router;
+        LinkTokenInterface private link;
+        bytes32 private s_lastReceivedMessageId; // Store the last received messageId.
+        string private s_lastReceivedText; // Store the last received text.
     /// @notice Constructor initializes the contract with the router address.
     /// @param _router The address of the router contract.
     /// @param _link The address of the link contract.
-    constructor(address _router, address _link) {
-        s_router = IRouterClient(_router);
-        s_linkToken = LinkTokenInterface(_link);
+    constructor(address _router, address _link) CCIPReceiver(_router) {
+            router = IRouterClient(_router);
+            link = LinkTokenInterface(_link);
     }
     /// @notice Sends data to receiver on the destination chain.
     /// @dev Assumes your contract has sufficient LINK.
@@ -48,33 +59,56 @@ contract CcipClient is OwnerIsCreator {
                 // and ensures compatibility with future CCIP upgrades. Read more about it here: https://docs.chain.link/ccip/best-practices#using-extraargs
                 Client.EVMExtraArgsV2({
                     gasLimit: 200_000, // Gas limit for the callback on the destination chain
-                    allowOutOfOrderExecution: true // Allows the message to be executed out of order relative to other messages from the same sender
+                    allowOutOfOrderExecution: false // Allows the message to be executed out of order relative to other messages from the same sender
                 })
             ),
             // Set the feeToken  address, indicating LINK will be used for fees
-            feeToken: address(s_linkToken)
+            feeToken: address(link)
         });
         // Get the fee required to send the message
-        uint256 fees = s_router.getFee(
-            destinationChainSelector,
-            evm2AnyMessage
+       uint256 fees = router.getFee(destinationChainSelector, evm2AnyMessage);
         );
-        if (fees > s_linkToken.balanceOf(address(this)))
-            revert NotEnoughBalance(s_linkToken.balanceOf(address(this)), fees);
+        if (fees > link.balanceOf(address(this)))
+            revert NotEnoughBalance(link.balanceOf(address(this)), fees);
         // approve the Router to transfer LINK tokens on contract's behalf. It will spend the fees in LINK
-        s_linkToken.approve(address(s_router), fees);
+        link.approve(address(router), fees);
         // Send the message through the router and store the returned message ID
-        messageId = s_router.ccipSend(destinationChainSelector, evm2AnyMessage);
+        messageId = router.ccipSend(destinationChainSelector, evm2AnyMessage);
         // Emit an event with message details
         emit MessageSent(
             messageId,
             destinationChainSelector,
             receiver,
             text,
-            address(s_linkToken),
+            address(link),
             fees
         );
         // Return the message ID
         return messageId;
     }
+
+    /// handle a received message
+        function _ccipReceive(
+            Client.Any2EVMMessage memory any2EvmMessage
+        ) internal override {
+            s_lastReceivedMessageId = any2EvmMessage.messageId; // fetch the messageId
+            s_lastReceivedText = abi.decode(any2EvmMessage.data, (string)); // abi-decoding of the sent text
+            emit MessageReceived(
+                any2EvmMessage.messageId,
+                any2EvmMessage.sourceChainSelector, // fetch the source chain identifier (aka selector)
+                abi.decode(any2EvmMessage.sender, (address)), // abi-decoding of the sender address,
+                abi.decode(any2EvmMessage.data, (string))
+            );
+        }
+
+        /// @notice Fetches the details of the last received message.
+        /// @return messageId The ID of the last received message.
+        /// @return text The last received text.
+        function getLastReceivedMessageDetails()
+            external
+            view
+            returns (bytes32 messageId, string memory text)
+        {
+            return (s_lastReceivedMessageId, s_lastReceivedText);
+        }
 }
