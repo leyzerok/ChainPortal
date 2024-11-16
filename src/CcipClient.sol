@@ -126,7 +126,7 @@ abstract contract CcipClient is Ownable, CCIPReceiver, MultiMessageHandler {
                 // where you set the extra arguments off-chain. This allows adaptation depending on the lanes, messages,
                 // and ensures compatibility with future CCIP upgrades. Read more about it here: https://docs.chain.link/ccip/best-practices#using-extraargs
                 Client.EVMExtraArgsV2({
-                    gasLimit: 200_000, // Gas limit for the callback on the destination chain
+                    gasLimit: 500_000, // Gas limit for the callback on the destination chain
                     allowOutOfOrderExecution: false // Allows the message to be executed out of order relative to other messages from the same sender
                 })
             ),
