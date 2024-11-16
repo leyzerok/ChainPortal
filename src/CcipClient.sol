@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.27;
 import {IRouterClient} from "@chainlink/contracts-ccip/src/v0.8/ccip/interfaces/IRouterClient.sol";
-import {OwnerIsCreator} from "@chainlink/contracts-ccip/src/v0.8/shared/access/OwnerIsCreator.sol";
 import {Client} from "@chainlink/contracts-ccip/src/v0.8/ccip/libraries/Client.sol";
 import {LinkTokenInterface} from "@chainlink/contracts-ccip/src/v0.8/shared/interfaces/LinkTokenInterface.sol";
 import {CCIPReceiver} from "@chainlink/contracts-ccip/src/v0.8/ccip/applications/CCIPReceiver.sol";
 import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import {SafeERC20} from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
-
-contract CcipClient is OwnerIsCreator, CCIPReceiver {
+import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
+import {MultiMessageHandler} from "./MultiMessageHandler.sol";
+abstract contract CcipClient is Ownable, CCIPReceiver, MultiMessageHandler {
     using SafeERC20 for IERC20;
     // Custom errors to provide more descriptive revert messages.
     error NotEnoughBalance(uint256 currentBalance, uint256 calculatedFees); // Used to make sure contract has enough balance.
@@ -26,7 +26,7 @@ contract CcipClient is OwnerIsCreator, CCIPReceiver {
         bytes32 indexed messageId, // The unique ID of the CCIP message.
         uint64 indexed destinationChainSelector, // The chain selector of the destination chain.
         address receiver, // The address of the receiver on the destination chain.
-        string text, // The text being sent.
+        bytes message, // The text being sent.
         address feeToken, // the token address used to pay CCIP fees.
         uint256 fees // The fees paid for sending the CCIP message.
     );
@@ -35,7 +35,7 @@ contract CcipClient is OwnerIsCreator, CCIPReceiver {
         bytes32 indexed messageId, // The unique ID of the message.
         uint64 indexed sourceChainSelector, // The chain selector of the source chain.
         address sender, // The address of the sender from the source chain.
-        string text // The text that was received.
+        bytes message // The text that was received.
     );
     // Event emitted when the tokens are transferred to an account on another chain.
     event TokensTransferred(
@@ -67,7 +67,10 @@ contract CcipClient is OwnerIsCreator, CCIPReceiver {
     /// @notice Constructor initializes the contract with the router address.
     /// @param _router The address of the router contract.
     /// @param _link The address of the link contract.
-    constructor(address _router, address _link) CCIPReceiver(_router) {
+    constructor(
+        address _router,
+        address _link
+    ) CCIPReceiver(_router) /* Ownable(msg.sender) */ {
             router = IRouterClient(_router);
             link = LinkTokenInterface(_link);
     }
@@ -105,17 +108,17 @@ contract CcipClient is OwnerIsCreator, CCIPReceiver {
     /// @dev Assumes your contract has sufficient LINK.
     /// @param destinationChainSelector The identifier (aka selector) for the destination blockchain.
     /// @param receiver The address of the recipient on the destination blockchain.
-    /// @param text The string text to be sent.
+    /// @param message The message on destination chain.
     /// @return messageId The ID of the message that was sent.
     function sendMessage(
         uint64 destinationChainSelector,
         address receiver,
-        string calldata text
+        bytes calldata message
     ) external onlyOwner returns (bytes32 messageId) {
         // Create an EVM2AnyMessage struct in memory with necessary information for sending a cross-chain message
         Client.EVM2AnyMessage memory evm2AnyMessage = Client.EVM2AnyMessage({
             receiver: abi.encode(receiver), // ABI-encoded receiver address
-            data: abi.encode(text), // ABI-encoded string
+            data: abi.encode(message), // ABI-encoded string
             tokenAmounts: new Client.EVMTokenAmount[](0), // Empty array indicating no tokens are being sent
             extraArgs: Client._argsToBytes(
                 // Additional arguments, setting gas limit and allowing out-of-order execution.
@@ -144,7 +147,7 @@ contract CcipClient is OwnerIsCreator, CCIPReceiver {
             messageId,
             destinationChainSelector,
             receiver,
-            text,
+            message,
             address(link),
             fees
         );
