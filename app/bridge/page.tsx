@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
-const BridgePage: React.FC = () => {
+export default function BridgePage() {
     const [sellAmount, setSellAmount] = useState<number | string>("");
     const [buyAmount, setBuyAmount] = useState<number | string>("");
     const [selectedSellToken, setSelectedSellToken] = useState<string>("USDC");
