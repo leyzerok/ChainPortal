@@ -19,6 +19,16 @@ const networks = [
     logo: 'https://avatars.githubusercontent.com/u/108554348?v=4',
     description: 'Coinbase-incubated Ethereum L2',
   },
+  {
+    name: 'Optimism',
+    logo: 'https://cryptologos.cc/logos/optimism-ethereum-op-logo.png',
+    description: 'Scalable Ethereum Layer 2 solution',
+  },
+  {
+    name: 'Ethereum Mainnet',
+    logo: 'https://cryptologos.cc/logos/ethereum-eth-logo.png',
+    description: 'The original decentralized smart contract platform',
+  },
 ];
 
 export function Networks() {
