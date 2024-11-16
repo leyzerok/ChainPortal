@@ -2,16 +2,16 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { LinkSimple, ArrowsLeftRight, Wallet, ChartLine, Book } from '@phosphor-icons/react';
 import { DynamicWidget } from '@dynamic-labs/sdk-react-core';
 import { cn } from '@/lib/utils';
+import Image from 'next/image'
 
 const navigation = [
-  { name: 'Home', href: '/', icon: LinkSimple },
-  { name: 'Swap', href: '/swap', icon: ArrowsLeftRight },
-  { name: 'Bridge', href: '/bridge', icon: Wallet },
-  { name: 'Portfolio', href: '/portfolio', icon: ChartLine },
-  { name: 'Docs', href: '/docs', icon: Book },
+  { name: 'Home', href: '/' },
+  { name: 'Swap', href: '/swap'},
+  { name: 'Bridge', href: '/bridge'},
+  { name: 'Portfolio', href: '/portfolio'},
+  { name: 'Docs', href: '/docs'},
 ];
 
 export function Header() {
@@ -27,7 +27,7 @@ export function Header() {
             className="flex items-center space-x-2 text-[#00FF94] hover:text-[#00FF94]/90 transition-colors"
             onClick={() => setActiveTab('Home')}
           >
-            <LinkSimple className="w-8 h-8" weight="bold" />
+            <Image src="/static/logo.svg" alt="logo" width={40} height={40}></Image>
             <span className="text-xl font-bold">ChainPortal</span>
           </Link>
 
@@ -45,7 +45,6 @@ export function Header() {
                 )}
                 onClick={() => setActiveTab(item.name)}
               >
-                <item.icon className="w-4 h-4 mr-2" weight="bold" />
                 {item.name}
               </Link>
             ))}
@@ -55,11 +54,6 @@ export function Header() {
           <div className="flex items-center space-x-4">
             <DynamicWidget />
           </div>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden p-2 rounded-lg text-gray-400 hover:text-[#00FF94] hover:bg-[#00FF94]/10">
-            <LinkSimple className="w-6 h-6" weight="bold" />
-          </button>
         </div>
       </div>
     </header>
