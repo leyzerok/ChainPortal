@@ -11,7 +11,7 @@ import { EthereumWalletConnectors } from '@dynamic-labs/ethereum';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'ChainPortal - Cross-Chain DeFi Platform',
+  title: 'ChainPortal - Your Gateway to Cross-Chain DeFi',
   description: 'Modern DeFi platform for cross-chain portfolio management and swaps',
 };
 
