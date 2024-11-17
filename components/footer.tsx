@@ -72,13 +72,13 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-2 text-sm text-gray-400">
               <span>Powered by</span>
-              <span className="text-[#00FF94]">Dynamic Wallet</span>
+              <span className="text-[#00FF94]">Dynamic</span>
               <span>•</span>
-              <span className="text-[#00FF94]">1inch</span>
+              <span className="text-[#00FF94]">Onchain Kit</span>
               <span>•</span>
               <span className="text-[#00FF94]">Chainlink</span>
               <span>•</span>
-              <span className="text-[#00FF94]">Chronicle Protocol</span>
+              <span className="text-[#00FF94]">LayerZero</span>
               <span>•</span>
               <span className="text-[#00FF94]">Blockscout</span>
             </div>
