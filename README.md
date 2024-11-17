@@ -1,44 +1,27 @@
-## Foundry
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
-Foundry consists of:
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
-## Documentation
-https://book.getfoundry.sh/
-## Usage
-### Build
-```shell
-$ forge build
-```
-### Test
-```shell
-$ forge test
-```
-### Format
-```shell
-$ forge fmt
-```
-### Gas Snapshots
-```shell
-$ forge snapshot
-```
-### Anvil
-```shell
-$ anvil
-```
-### Deploy
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-### Cast
-```shell
-$ cast <subcommand>
-```
-### Help
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+ChainPortal is an innovative dApp designed to simplify cross-chain asset management for users across various blockchain networks. Built during ETHGlobal, our project integrates cutting-edge technologies to provide eamless swaps, perform cross-chain transfers, and track your portfolio across multiple networks.
+
+What We’ve Built
+
+At the heart of ChainPortal is a vision to break down the complexities of blockchain ecosystems. We’ve built a dApp that combines several advanced tools and protocols to create a unified, intuitive platform for users to interact with multiple blockchains.
+
+Technologies We Used
+
+Our project stands out due to the integration of multiple advanced tools and technologies that address the challenges of interoperability, data transparency, and user accessibility.
+
+- Chainlink CCIP (Enables cross-chain token transfers securely and reliably).
+- LayerZero (future integration): (More extensive interoperability in upcoming iterations).
+- Onchain Kit (Integrating swap functionality into our app, enabling efficient and user-friendly token exchanges directly onchain).
+- Dynamic (A seamless wallet connection and authentication layer with robust security).
+- Blockscout (One of the most reliable blockchain explorers).
+
+What Makes ChainPortal Unique?
+
+We simplify cross-chain interactions by integrating multiple protocols into a single platform, eliminating the need for users to navigate between various dApps.
+
+With the help of Chainlink CCIP and Dynamic, we prioritize user security and reliability in all cross-chain and on-chain transactions.
+
+Our easy-to-use interface ensures users can manage their assets effortlessly, whether they’re experienced blockchain users or beginners.
+
+While we’ve already implemented key functionalities, we’re also planning to integrate additional protocols like LayerZero for even broader cross-chain compatibility.
+
+Welcome to the next Era of DeFi with All-In-One Ultimate Tool — Welcome to ChainPortal.
