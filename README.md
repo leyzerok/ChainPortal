@@ -25,3 +25,6 @@ Our easy-to-use interface ensures users can manage their assets effortlessly, wh
 While we’ve already implemented key functionalities, we’re also planning to integrate additional protocols like LayerZero for even broader cross-chain compatibility.
 
 Welcome to the next Era of DeFi with All-In-One Ultimate Tool — Welcome to ChainPortal.
+
+# Chainlink CCIP Contract is deployed on 3 chains: Optimism Mainnet, Arbitrum Mainnet & Base Mainnet
+# Contract Address - 0x3AcD9CE5468BD6B2Bab1493ef44F91F5616cA0FF
