@@ -2,8 +2,11 @@
 
 import { ArrowRight } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 
 export function Hero() {
+  const router = useRouter();
+
   return (
     <section className="relative min-h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden">
       {/* Background gradient */}
@@ -24,11 +27,20 @@ export function Hero() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="bg-[#00FF94] text-black hover:bg-[#00FF94]/90">
+          <Button
+            size="lg"
+            className="bg-[#00FF94] text-black hover:bg-[#00FF94]/90"
+            onClick={() => router.push('/swap')}
+          >
             Launch App
             <ArrowRight className="ml-2 h-5 w-5" weight="bold" />
           </Button>
-          <Button size="lg" variant="outline" className="border-[#00FF94] text-[#00FF94] hover:bg-[#00FF94]/10">
+          <Button
+            size="lg"
+            variant="outline"
+            className="border-[#00FF94] text-[#00FF94] hover:bg-[#00FF94]/10"
+            onClick={() => router.push('/docs')}
+          >
             Read Docs
           </Button>
         </div>
