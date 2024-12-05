@@ -28,7 +28,7 @@ export default function RootLayout({
         <DynamicContextProvider
           theme='dark'
           settings={{
-            environmentId: process.env.NEXT_PUBLIC_DYNAMIC_API || "", // Replace with your actual environment ID
+            environmentId: process.env.NEXT_PUBLIC_DYNAMIC_API || "test-id",
             walletConnectors: [EthereumWalletConnectors],
           }}>
           <ThemeProvider
